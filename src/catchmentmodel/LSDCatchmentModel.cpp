@@ -1328,8 +1328,8 @@ void runSimulation(std::string pfname)
       sim = new LibGeoDecomp::StripingSimulator<Cell>(initialiser, LibGeoDecomp::MPILayer().rank()? 0 : new LibGeoDecomp::NoOpBalancer(), 1);
     }
   else if(catchment->simulator == "hipar")
-    {
-      sim = new LibGeoDecomp::HiParSimulator<Cell, LibGeoDecomp::RecursiveBisectionPartition<2> >(initialiser, LibGeoDecomp::MPILayer().rank() ? 0 : new LibGeoDecomp::NoOpBalancer(), 1, 1);
+    { // HiParSimulator on its own does not name a template type
+      sim = new LibGeoDecomp::HiParSimulator::HiParSimulator<Cell, LibGeoDecomp::RecursiveBisectionPartition<2> >(initialiser, LibGeoDecomp::MPILayer().rank() ? 0 : new LibGeoDecomp::NoOpBalancer(), 1, 1);
     }
   
   // Set up visualisation outputs  

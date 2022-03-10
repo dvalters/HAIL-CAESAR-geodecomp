@@ -9,9 +9,9 @@ SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name *.$(SRCEXT))
 OBJECTS := $(patsubst $(SRCDIR)/%,$(BUILDDIR)/%,$(SOURCES:.$(SRCEXT)=.o))
 
-INC := -I ./ -I ./include -I ./include/libgeodecomp -I $(GEODECOMP_DIR)/include -I $(BOOST_DIR)/include
-CFLAGS += -Wfatal-errors -fopenmp -std=c++11 $(GITREV)
-LDFLAGS := -fopenmp -L $(GEODECOMP_DIR)/lib -L $(BOOST_DIR)/lib 
+INC := -I ./ -I ./include -I ./include/libgeodecomp -I $(GEODECOMP_DIR)/include -I $(BOOST_INCLUDE_DIR)
+CFLAGS += -DLIBGEODECOMP_WITH_MPI -Wfatal-errors -fopenmp -std=c++11 $(GITREV)
+LDFLAGS := -fopenmp -L $(GEODECOMP_DIR)/lib -L $(BOOST_LIB_DIR) 
 LIBS := -lgeodecomp -lboost_date_time 
 
 TYPEMAP_TEST_OBJECTS := src/catchmentmodel/LSDCatchmentModel.o src/libgeodecomp/typemaps.o test/typemaptest.o

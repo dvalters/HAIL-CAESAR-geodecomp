@@ -2,6 +2,7 @@
 #include <libgeodecomp/geometry/coord.h>
 
 #include <typemaps.h>
+#include <apitraits.h>
 
 #ifndef CELL_H
 #define CELL_H
